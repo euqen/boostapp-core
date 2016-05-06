@@ -1,0 +1,32 @@
+package jav.infrastructure;
+
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+import org.junit.Test;
+import resources.infrastructure.Auth;
+
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Created by dima on 3.5.16.
+ */
+public class TestAuth extends ActionSupport implements SessionAware {
+
+    private SessionMap session;
+    private Auth auth;
+
+    public void setSession(Map<String, Object> map) {
+        this.session = session;
+        auth.setCurrentUser(this.session, "lol@mail.ru");
+    }
+
+    @Test
+    public void unsetCurrentUser() throws Exception {
+        assertEquals(auth.getCurrentUser(), session);
+    }
+
+
+}

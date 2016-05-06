@@ -1,0 +1,63 @@
+package jav.project;
+
+import org.junit.Before;
+import org.junit.Test;
+import resources.projects.Project;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * Created by dima on 3.5.16.
+ */
+public class TestProject {
+    private Project project;
+
+    private String title = "Murder";
+    private String description = "ACTIVE";
+    private Integer amount = 55;
+    private Integer paymentAmount = 12;
+    private int companyId = 11;
+
+
+    @Before
+    public void setUp() throws Exception {
+        project = new Project();
+        project.setCompanyId(companyId);
+        project.setTitle(title);
+        project.setAmount(amount);
+        project.setDescription(description);
+        project.setPaymentAmount(paymentAmount);
+    }
+
+    @Test
+    public void getId() throws Exception {
+        assertNotNull(project.getId());
+    }
+
+    @Test
+    public void getCompanyId() throws Exception {
+        assertEquals(project.getCompanyId(), companyId);
+    }
+
+    @Test
+    public void getTitle() throws Exception {
+        assertEquals(project.getTitle(), title);
+    }
+
+    @Test
+    public void getAmount() throws Exception {
+        assertEquals(project.getAmount(), amount);
+    }
+
+    @Test
+    public void getDescription() throws Exception {
+        assertEquals(project.getDescription(), description);
+    }
+
+    @Test
+    public void getPaymentAmount() throws Exception {
+        assertEquals(project.getPaymentAmount(), paymentAmount);
+    }
+
+}
