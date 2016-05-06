@@ -1,6 +1,7 @@
-<div ng-repeat="error in errors">
-    {{error}}
+<div class="alert alert-danger" role="alert" ng-repeat="error in errors">
+    <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
+
 <h3>Project {{!isNew ? 'edit' : 'add'}}</h3>
 <br>
 <input type="text" placeholder="title" ng-model="model.title" class="form-control"><br>

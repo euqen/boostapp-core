@@ -1,27 +1,24 @@
 <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
-    {{error}}
+    <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
-
-{{user.email}}
-<br><br>
+<h4>{{user.email}}</h4>
 <div ng-if="context && context.id != user.id">
     <select ng-model="model.companyId">
         <option ng-repeat="company in companies" ng-value="company.id">{{company.title}}</option>
     </select>
     <button ng-click="invite()">Invite user to company</button>
 </div>
-
 <hr>
 <div ng-if="!payments || payments.length === 0">
     There are no payments found
 </div>
-<div ng-if="payments && payments.length > 0">
-    User's donations
-</div>
-<div ng-repeat="payment in payments">
-    {{payment.amountInCents / 100}}$ {{comment.createdOn}} <a href="/projects/{{payment.project.id}}/page">{{payment.project.title}}</a>
-</div>
-<hr>
+<!--<div ng-if="payments && payments.length > 0">-->
+    <!--User's donations-->
+<!--</div>-->
+<!--<div ng-repeat="payment in payments">-->
+    <!--{{payment.amountInCents / 100}}$ {{comment.createdOn}} <a href="/projects/{{payment.project.id}}/page">{{payment.project.title}}</a>-->
+<!--</div>-->
+<!--<hr>-->
 
 <div ng-if="context.id == user.id && invites.length > 0">
     <h4>My pending invites</h4>

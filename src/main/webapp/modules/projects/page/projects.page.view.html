@@ -1,45 +1,50 @@
 <div>
-    <div ng-repeat="error in errors" style="background: crimson">
-        {{error}}
+    <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
+        <div ng-repeat="(key, value) in error">{{value}}</div>
     </div>
 
-    <h3>{{model.title}} <span ng-if="context"><a href="/projects/{{model.id}}">Edit</a> / <a href="#" ng-click="remove()">Remove</a></span></h3><br>
-    <strong>{{model.description}}</strong><br>
-    <strong>Full Amount: ${{model.amount}}</strong><br>
-    <strong>Payment Amount: ${{model.paymentAmount}}</strong>
-    <div style="background: #00FFaa" ng-if="model.paymentAmount > model.amount">
-        Project completely deposited. Congrats!
-    </div>
-    <br>
-    <div ng-if="context">
-        <input type="number" ng-model="model.payment" placeholder="Add payment amount here">
-        <button ng-click="addPayment()" class="btn btn-success btn-sm">Add payment</button>
+    <div style="float:left">
+        <h3>{{model.title}} <span ng-if="context"><a href="/projects/{{model.id}}" class="btn btn-sm btn-warning">Edit</a> / <a href="#" class="btn btn-sm btn-danger" ng-click="remove()">Remove</a></span></h3><br>
+        <strong>{{model.description}}</strong><br>
+        <strong>Full Amount: ${{model.amount}}</strong><br>
+        <strong>Payment Amount: ${{model.paymentAmount}}</strong>
+        <div style="background: #00FFaa" ng-if="model.paymentAmount > model.amount">
+            Project completely deposited. Congrats!
+        </div>
+        <br>
+        <div ng-if="context">
+            <input type="number" ng-model="model.payment" placeholder="Add payment amount here" class="form-control" style="width:180px; margin-right: 5px;float:left">
+            <button ng-click="addPayment()" class="btn btn-success btn-sm">Add payment</button>
+        </div>
+        <hr>
+        <div ng-if="!payments || payments.length === 0">
+            There are no payments left
+        </div>
+        <div ng-if="payments.length > 0">
+            <h4>Payments</h4>
+        </div>
+        <div ng-repeat="payment in payments">
+            {{payment.amountInCents / 100}}$ {{payment.createdOn}} <a href="/user/{{payment.user.id}}">{{payment.user.email}}</a>
+        </div>
     </div>
     <hr>
-    <div ng-if="!payments || payments.length === 0">
-        There are no payments left
-    </div>
-    <div ng-if="payments.length > 0">
-        <h4>Payments</h4>
-    </div>
-    <div ng-repeat="payment in payments">
-        {{payment.amountInCents / 100}}$ {{payment.createdOn}} <a href="/user/{{payment.user.id}}">{{payment.user.email}}</a>
-    </div>
-    <hr>
-    <h4>Comments</h4>
-    <div ng-if="!comments || comments.length === 0">
-        There are no comments left
-    </div>
-    <div ng-repeat="comment in comments" style="background: lightblue; width: 300px; margin: 5px;">
-        User <a href="/user/{{comment.user.id}}">{{comment.user.email}}</a> wrote: <br>
-        {{comment.commentText}}<br>
-        <span>{{comment.createdOn}}</span>
-    </div>
-    <div ng-if="context">
-        <h4>Create Comment</h4>
-        <textarea cols="30" rows="10" ng-model="comment">
-            Comment here
-        </textarea><br>
-        <button ng-click="createComment(comment)" class="btn btn-small btn-default">Create Comment</button>
+    <div style="float:right">
+        <h4>Comments</h4>
+        <div ng-if="!comments || comments.length === 0">
+            There are no comments left
+        </div>
+        <div ng-repeat="comment in comments" style="background: lightblue; width: 300px; margin: 5px;padding:7px;border-radius: 4px;">
+            User <a href="/user/{{comment.user.id}}">{{comment.user.email}}</a> wrote: <br>
+            {{comment.commentText}}<br>
+            <span>{{comment.createdOn}}</span>
+        </div>
+        <div ng-if="context">
+            <br>
+            <h4>Create Comment</h4>
+            <textarea cols="31" rows="4" ng-model="comment" class="form-control">
+                Comment here
+            </textarea><br>
+            <button ng-click="createComment(comment)" class="btn btn-small btn-default" style="float:right">Create Comment</button>
+        </div>
     </div>
 </div>

@@ -16,7 +16,6 @@
 <body>
 
 <div ng-controller="boostapp" class="container">
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -34,6 +33,12 @@
     <br>
     <div ng-view></div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted" lingdex="2">(C) Angular + Struts 2 Test APP For SPP.</p>
+    </div>
+</footer>
 
 <script src="<s:url value="js/lib/angular/angular.min.js" />"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -60,6 +65,7 @@
 <script src="<s:url value="shared/payment.service.js" />"></script>
 <script src="<s:url value="modules/companies/company.controller.js" />"></script>
 <script src="<s:url value="modules/404/404.controller.js" />"></script>
+<script src="<s:url value="modules/block/blocked.controller.js" />"></script>
 <script src="<s:url value="modules/admin/admin.controller.js" />"></script>
 </body>
 </html>

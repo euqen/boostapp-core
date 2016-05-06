@@ -48,6 +48,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'modules/404/404.view.html',
             controller: '404Controller'
         })
+        .when('/block', {
+            templateUrl: 'modules/block/blocked.view.html',
+            controller: 'BlockedController'
+        })
         .when('/admin', {
             templateUrl: 'modules/admin/admin.view.html',
             controller: 'AdminController'
@@ -64,8 +68,8 @@ app.controller('boostapp', function ($scope, UserService, context, $window) {
             .then(function(res) {
                 context.set(res.data.currentUser);
                 $scope.context = res.data.currentUser;
-                if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/404') {
-                    $window.location = '/404';
+                if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/block') {
+                    $window.location = '/block';
                 }
             });
     };

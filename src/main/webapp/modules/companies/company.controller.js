@@ -7,8 +7,8 @@ app.controller('CompaniesController', function ($scope, HomeService, CompanyServ
         return $location.path('/404');
     }
 
-    if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/404') {
-        $window.location = '/404';
+    if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/block') {
+        $window.location = '/block';
     }
 
     return CompanyService.getCompanies()

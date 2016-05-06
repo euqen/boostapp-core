@@ -1,6 +1,7 @@
-app.controller('HomeController', function ($scope, HomeService, $rootScope) {
-    if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/404') {
-        $window.location = '/404';
+app.controller('HomeController', function ($scope, HomeService, $rootScope, $window) {
+    if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/block') {
+        $window.location = '/block';
+        return;
     }
 
     return HomeService.getProjects()

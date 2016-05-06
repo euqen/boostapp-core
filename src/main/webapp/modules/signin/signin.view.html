@@ -1,6 +1,7 @@
 <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
-    {{error}}
+    <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
+
 
 <form class="form-signin">
     <h2 class="form-signin-heading">Please sign in or <a href="/signup">signup</a></h2>

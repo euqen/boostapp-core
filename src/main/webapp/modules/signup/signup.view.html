@@ -1,5 +1,5 @@
 <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
-    {{error}}
+    <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
 
 <div>

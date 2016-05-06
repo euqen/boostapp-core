@@ -4,8 +4,9 @@ app.controller('ProjectsController', function ($scope, HomeService, ProjectsServ
 
     $scope.context = context.get();
 
-    if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/404') {
-        $window.location = '/404';
+    if($scope.context && $scope.context.isArchived && $window.location.pathname !== '/block') {
+        $window.location = '/block';
+        return;
     }
 
     $scope.save = function(model) {

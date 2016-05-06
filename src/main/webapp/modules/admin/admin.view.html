@@ -1,12 +1,12 @@
 <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
-    {{error}}
+    <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
 
-<div ng-repeat="user in users" class="row">
-    <div class="col-md-8 col-lg-9 col-sm-3">{{user.email}}</div>
-    <div class="col-md-3 col-sm-4">
-        <button ng-click="blockUser(user.id)" ng-disabled="user.isArchived" class="btn btn-sm btn-warning">Block user</button>
-        <button ng-click="unBlockUser(user.id)" ng-disabled="!user.isArchived" class="btn btn-sm btn-success">Unblock user</button>
+<div ng-repeat="user in users" class="row" style="border-bottom: 1px solid #B8BBBF;">
+    <div class="col-md-8 col-lg-8 col-sm-8"  style="margin-top: 12px;">{{user.email}}</div>
+    <div class="col-md-4 col-sm-4" style="margin-top: 5px;">
+        <button ng-click="blockUser(user.id)" ng-disabled="user.isArchived" style="float:right;" class="btn btn-sm btn-warning">Block user</button>
+        <button ng-click="unBlockUser(user.id)" ng-disabled="!user.isArchived" style="float:right; margin-right: 3px;" class="btn btn-sm btn-success">Unblock user</button>
     </div>
     <hr>
 </div>

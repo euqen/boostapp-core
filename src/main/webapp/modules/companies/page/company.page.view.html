@@ -1,8 +1,9 @@
-<div ng-repeat="error in errors" style="background: crimson">
-    {{error}}
+<div class="alert alert-danger" role="alert" ng-repeat="error in errors">
+    <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
 
-<h3>{{model.title}} <a href="/companies/{{model.id}}">Edit</a></h3>
+
+<h3>{{model.title}} <a class="btn btn-sm btn-warning" href="/companies/{{model.id}}">Edit</a></h3>
 <div>{{model.tagLine}}</div>
 <hr>
 <div ng-if="!projects || projects.length === 0">
@@ -11,12 +12,14 @@
 
 <div ng-if="projects && projects.length > 0">
     <h4>Company's projects</h4>
-</div>
-<div ng-repeat="project in projects" style="background: #00FFaa; width: 300px; margin: 5px;padding: 5px;">
-    <a href="/projects/{{project.id}}/page">{{project.title}}</a>
-    <div>{{project.description}}</div>
-    <div>${{project.paymentAmount / 100}} of ${{project.amount / 100}}</div>
-    <div style="float:right"><a href="/projects/{{project.id}}">Edit</a> / <a href="#" ng-click="removeProject(project.id)">Remove</a></div>
+    <div ng-repeat="project in projects" style="background: #5cb85c; border-radius: 4px; margin: 5px;padding: 7px;">
+        <div style="float:left">
+        </div>
+        <h4><a href="/projects/{{project.id}}/page" style="color:black">{{project.title}}</a></h4>
+        <div>{{project.description}}</div>
+        <div>${{project.paymentAmount / 100}} of ${{project.amount / 100}}</div>
+    </div>
+    <div style="float:right"><a class="btn btn-sm btn-success" href="/projects/{{project.id}}">Edit</a> <a class="btn btn-sm btn-success" href="#" ng-click="removeProject(project.id)">Remove</a></div>
     <div style="clear: both"></div>
 </div>
 

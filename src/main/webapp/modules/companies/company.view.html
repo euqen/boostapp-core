@@ -1,8 +1,9 @@
-<h4>Companies</h4> <a href="/companies/new" ng-if="context">Create Company</a>
+<h4 style="float:left">Companies</h4>
+<a href="/companies/new" style="float:right;" ng-if="context" class="btn btn-success btn-sm">Create Company</a>
 <br>
 <div class="row">
-    <div ng-repeat="company in companies" class="col-md-10 col-sm-7 col-lg-12" style="border-radius: 3px;background: cornflowerblue; margin: 5px; padding: 5px">
-        <a href="/companies/{{company.id}}/page">{{company.title}}</a>
+    <div ng-repeat="company in companies" class="col-md-10 col-sm-7 col-lg-12" style="border-radius: 3px;background: rgba(92, 138, 184, 0.5); margin: 5px; padding: 5px">
+        <h4><a href="/companies/{{company.id}}/page" style="color: black">{{company.title}}</a></h4>
         <div>{{company.tagLine}}</div>
     </div>
 </div>
