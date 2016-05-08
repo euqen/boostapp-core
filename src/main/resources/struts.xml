@@ -79,6 +79,78 @@
             </interceptor-ref>
             <result type="json" />
         </action>
+        <action name="/api/get-payment-pdf/*" class="resources.payments.PaymentCheckAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/pdf</param>
+                <param name="contentDisposition">filename="check.pdf"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-project-pdf/*" class="resources.projects.ProjectPdfAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/pdf</param>
+                <param name="contentDisposition">filename="check.pdf"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-company-projects-pdf/*" class="resources.companies.CompanyProjectsPdfAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/pdf</param>
+                <param name="contentDisposition">filename="check.pdf"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-companies-csv/*" class="resources.companies.ExportCompaniesCsvAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="report.csv"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-projects-csv/*" class="resources.projects.ExportCompanyProjectsCsvAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="report.csv"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-company-users-csv/*" class="resources.companies.ExportCompanyUsersCsvAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="report.csv"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
     </package>
 
     <package name="index" extends="struts-default, json-default">

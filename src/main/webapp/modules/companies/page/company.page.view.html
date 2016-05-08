@@ -5,10 +5,14 @@
 
 <h3>{{model.title}} <a class="btn btn-sm btn-warning" href="/companies/{{model.id}}">Edit</a></h3>
 <div>{{model.tagLine}}</div>
+<a href="/api/get-company-projects-pdf?companyId={{model.id}}" target="_blank">Generate company's projects report</a>
 <hr>
 <div ng-if="!projects || projects.length === 0">
     There are no company's projects
 </div>
+
+<a href="/api/get-projects-csv?companyId={{model.id}}" target="_blank">Export company's projects</a>
+<a href="/api/get-company-users-csv?companyId={{model.id}}" target="_blank">Export company's users</a>
 
 <div ng-if="projects && projects.length > 0">
     <h4>Company's projects</h4>

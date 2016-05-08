@@ -29,6 +29,16 @@ public class CompanyMembersService {
         return cm;
     }
 
+    public static List<CompanyMember> getByCompanyId(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM CompanyMember WHERE companyId = " + id);
+        List<CompanyMember> cm = query.list();
+        session.getTransaction().commit();
+
+        return cm;
+    }
+
     public static CompanyMember getUserInCompany(Integer userId, Integer companyId) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

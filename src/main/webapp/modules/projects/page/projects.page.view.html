@@ -8,6 +8,7 @@
         <strong>{{model.description}}</strong><br>
         <strong>Full Amount: ${{model.amount}}</strong><br>
         <strong>Payment Amount: ${{model.paymentAmount}}</strong>
+        <a href="/api/get-project-pdf?projectId={{model.id}}" target="_blank">Get Project Invoice</a>
         <div style="background: #00FFaa" ng-if="model.paymentAmount > model.amount">
             Project completely deposited. Congrats!
         </div>

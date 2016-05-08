@@ -1,5 +1,6 @@
 <h4 style="float:left">Companies</h4>
 <a href="/companies/new" style="float:right;" ng-if="context" class="btn btn-success btn-sm">Create Company</a>
+<a href="/api/get-companies-csv?userId={{context.id}}" target="_blank" style="float:right;" ng-if="context" class="btn btn-success btn-sm">Export All companies</a>
 <br>
 <div class="row">
     <div ng-repeat="company in companies" class="col-md-10 col-sm-7 col-lg-12" style="border-radius: 3px;background: rgba(92, 138, 184, 0.5); margin: 5px; padding: 5px">

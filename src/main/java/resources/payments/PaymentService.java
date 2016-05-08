@@ -15,7 +15,10 @@ public class PaymentService {
 
     public static Payment getById(Integer id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Payment.class, id);
+        session.beginTransaction();
+        Payment p = session.get(Payment.class, id);
+        session.getTransaction().commit();
+        return p;
     }
 
     public static List<Payment> getAllByProjectId(Integer projectId) {
