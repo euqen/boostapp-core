@@ -14,7 +14,7 @@ public class ProjectValidator extends Validator {
     public ValidateResult validate(ProjectsAction params) {
         ValidateResult result = new ValidateResult();
 
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
         if (user == null) {
             this.addError("user", "You are not logged in");
             result.errors = this.getErrors();
@@ -37,7 +37,7 @@ public class ProjectValidator extends Validator {
             this.addError("title", "title could not be more than 100 symbols");
         }
 
-        if (description.length() > 500 ) {
+        if (description.length() > 200 ) {
             this.addError("desc", "desc could not be more than 500 symbols");
         }
 

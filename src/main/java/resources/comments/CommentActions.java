@@ -21,6 +21,7 @@ public class CommentActions extends ActionSupport {
     private Integer userId;
     private String commentText;
     private Integer projectId;
+    private String email;
 
     private List<Map<String, String>> validateErrors;
     private CommentValidator validator = new CommentValidator();
@@ -115,5 +116,13 @@ public class CommentActions extends ActionSupport {
 
     public void setUserId(Integer id) {
         this.userId = id;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

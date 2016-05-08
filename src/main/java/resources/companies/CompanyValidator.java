@@ -9,7 +9,7 @@ public class CompanyValidator extends Validator {
 
     public ValidateResult validate(CompanyActions params) {
         ValidateResult result = new ValidateResult();
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
 
         if (user == null) {
             this.addError("user", "You are not logged in");

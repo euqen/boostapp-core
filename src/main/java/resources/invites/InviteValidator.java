@@ -14,16 +14,16 @@ public class InviteValidator extends Validator {
 
     public ValidateResult validate(InviteActions params) {
         ValidateResult result = new ValidateResult();
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
 
         if (user == null) {
-            this.addError("user", "You are not loggged in");
+            this.addError("user", "You are not logged in");
         }
 
         Integer companyId = params.getCompanyId();
         Integer userId = params.getUserId();
 
-        if (companyId == null || userId == null ) {
+        if (companyId == null || userId == null || companyId == 0|| userId == 0) {
             this.addError("all", "Please specify user and company");
             result.errors = this.getErrors();
             return result;

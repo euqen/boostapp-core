@@ -25,6 +25,7 @@ public class ProjectsAction extends ActionSupport {
     private String description;
     private Integer amount;
     private boolean remove;
+    private String email;
 
     private List<Map<String, String>> validateErrors;
     private ProjectValidator validator = new ProjectValidator();
@@ -35,7 +36,7 @@ public class ProjectsAction extends ActionSupport {
     }
 
     public String view() throws Exception {
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(this.getEmail());
         if (user != null && user.getIsArchived()) {
             return SUCCESS;
         }
@@ -52,7 +53,7 @@ public class ProjectsAction extends ActionSupport {
     }
 
     public String update() throws Exception {
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(this.getEmail());
         if (user != null && user.getIsArchived()) {
             return SUCCESS;
         }
@@ -81,7 +82,7 @@ public class ProjectsAction extends ActionSupport {
     }
 
     public String create() throws Exception {
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(this.getEmail());
         if (user != null && user.getIsArchived()) {
             return SUCCESS;
         }
@@ -172,5 +173,13 @@ public class ProjectsAction extends ActionSupport {
 
     public List<Map<String, String>> getValidateErrors() {
         return this.validateErrors;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

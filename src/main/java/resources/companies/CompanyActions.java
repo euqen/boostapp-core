@@ -23,6 +23,7 @@ public class CompanyActions extends ActionSupport {
     private boolean remove;
     private int userId;
     private Company company;
+    private String email;
 
     private List<Map<String, String>> validateErrors;
     private CompanyValidator validator = new CompanyValidator();
@@ -75,7 +76,7 @@ public class CompanyActions extends ActionSupport {
     }
 
     public String create() throws Exception {
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(this.getEmail());
         if (user != null && user.getIsArchived()) {
             return SUCCESS;
         }
@@ -90,7 +91,7 @@ public class CompanyActions extends ActionSupport {
         Company company = CompanyService.save(mapCompany());
 
         CompanyMember cm = new CompanyMember();
-        cm.setUserId(Auth.getCurrentUser().getId());
+        cm.setUserId(Auth.getCurrentUser(this.getEmail()).getId());
         cm.setCompanyId(company.getId());
         cm.setRole("creator");
 
@@ -108,6 +109,14 @@ public class CompanyActions extends ActionSupport {
         company.setTagLine(this.getTagLine());
 
         return company;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

@@ -11,7 +11,7 @@ public class UserBlockValidator extends Validator {
         ValidateResult result = new ValidateResult();
         Integer userId = params.getId();
 
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
 
         if (user == null) {
             this.addError("user", "You are not logged in");
@@ -32,9 +32,9 @@ public class UserBlockValidator extends Validator {
             User blockingUser = UserService.getById(userId);
 
             if (blockingUser == null) {
-                this.addError("User", "This user does not exists");
+                this.addError("user", "This user does not exists");
             } else if (blockingUser.getId() == user.getId()) {
-                this.addError("User", "You cant block or unblock yourself");
+                this.addError("user", "You cant block or unblock yourself");
             }
         }
 

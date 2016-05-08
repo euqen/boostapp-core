@@ -22,6 +22,7 @@ public class InviteActions extends ActionSupport {
     private int userId;
     private int projectId;
     private String status;
+    private String email;
 
     private List<Map<String, String>> validateErrors;
     private InviteValidator validator = new InviteValidator();
@@ -140,5 +141,13 @@ public class InviteActions extends ActionSupport {
 
     public void setStatus(String s) {
         this.status = s;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

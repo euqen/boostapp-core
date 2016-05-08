@@ -7,9 +7,7 @@ import resources.companies.CompanyMember;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by dima on 3.5.16.
- */
+
 public class TestCompanyMember {
 
     private CompanyMember companyMember;
@@ -44,6 +42,26 @@ public class TestCompanyMember {
 
     @Test
     public void getRole() throws Exception {
+        assertEquals(companyMember.getRole(), role);
+    }
+
+    @Test
+    public void getCMId() throws Exception {
+        assertNotNull(companyMember.getId());
+    }
+
+    @Test
+    public void getCMCompanyId() throws Exception {
+        assertEquals(companyMember.getCompanyId(), companyId);
+    }
+
+    @Test
+    public void getCMUserId() throws Exception {
+        assertEquals(companyMember.getUserId(), userId);
+    }
+
+    @Test
+    public void getCmRole() throws Exception {
         assertEquals(companyMember.getRole(), role);
     }
 }

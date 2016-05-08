@@ -11,7 +11,7 @@ public class ProjectRemoveValidator extends Validator {
     public ValidateResult validate(ProjectsAction params) {
         ValidateResult result = new ValidateResult();
 
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
 
         if (user == null) {
             this.addError("user", "You are not logged in");
@@ -22,7 +22,7 @@ public class ProjectRemoveValidator extends Validator {
         Integer projectId = params.getId();
 
         if (projectId == null) {
-            this.addError("company", "Please select project");
+            this.addError("project", "Please select project");
         }
 
         Project project = ProjectService.getById(projectId);

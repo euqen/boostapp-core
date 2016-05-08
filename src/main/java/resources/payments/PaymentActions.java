@@ -21,6 +21,7 @@ public class PaymentActions extends ActionSupport {
     private Integer userId;
     private Integer projectId;
     private int amountInCents;
+    private String email;
 
     private List<Map<String, String>> validateErrors;
     private PaymentValidator validator = new PaymentValidator();
@@ -124,5 +125,13 @@ public class PaymentActions extends ActionSupport {
 
     public void setAmountInCents(int amountInCents) {
         this.amountInCents = amountInCents;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

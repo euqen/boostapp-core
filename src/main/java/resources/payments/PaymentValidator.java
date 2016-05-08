@@ -13,7 +13,7 @@ public class PaymentValidator extends Validator {
 
     public ValidateResult validate(PaymentActions params) {
         ValidateResult result = new ValidateResult();
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
 
         if (user == null) {
             this.addError("user", "You are not logged in");

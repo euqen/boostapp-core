@@ -39,7 +39,7 @@ public class UsersActions extends ActionSupport implements SessionAware {
 
     //context user
     public String view() throws Exception {
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(this.getEmail());
 
         if (this.getList()) {
             List<User> users = UserService.getAll();

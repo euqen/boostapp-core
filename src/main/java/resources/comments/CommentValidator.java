@@ -12,7 +12,7 @@ import resources.users.UserService;
 public class CommentValidator extends Validator {
     public ValidateResult validate(CommentActions params) {
         ValidateResult result = new ValidateResult();
-        User user = Auth.getCurrentUser();
+        User user = Auth.getCurrentUser(params.getEmail());
 
         if (user == null) {
             this.addError("user", "You are not logged in");
