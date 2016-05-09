@@ -8,6 +8,7 @@
     </select>
     <button ng-click="invite()">Invite user to company</button>
 </div>
+<a href="/api/get-user-details-pdf?userId={{user.id}}" target="_blank">Get user details pdf</a>
 <hr>
 <div ng-if="!payments || payments.length === 0">
     There are no payments found

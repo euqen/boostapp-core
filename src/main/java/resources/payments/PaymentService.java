@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import resources.payments.Payment;
 import resources.companies.Company;
 import resources.infrastructure.SessionHelper;
+import resources.projects.Project;
 
 public class PaymentService {
     @Resource(name="sessionFactory")
@@ -35,6 +36,16 @@ public class PaymentService {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         Query query = session.createQuery("FROM Payment WHERE userId = " + userId);
+        List<Payment> payments = query.list();
+        session.getTransaction().commit();
+
+        return payments;
+    }
+
+    public static List<Payment> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Payment");
         List<Payment> payments = query.list();
         session.getTransaction().commit();
 

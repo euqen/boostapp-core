@@ -151,6 +151,114 @@
                 <param name="bufferSize">2048</param>
             </result>
         </action>
+        <action name="/api/get-all-companies-csv/*" class="resources.companies.ExportAllCompaniesCsvAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="report.csv"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-all-projects-csv/*" class="resources.projects.ExportAllProjectsCsvAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="report.csv"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-all-companies-xls/*" class="resources.companies.ExportAllCompaniesXlsAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="companies.xls"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-all-projects-xls/*" class="resources.projects.ExportAllProjectsCsvAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="projects.xls"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-all-users-xls/*" class="resources.users.ExportAllUsersXlsAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="users.xls"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-all-payments-xls/*" class="resources.payments.ExportAllPaymentsXlsAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="payments.xls"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-all-comments-xls/*" class="resources.comments.ExportAllCommentsXlsAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">filename="comments.xls"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-project-details-pdf/*" class="resources.projects.ProjectDetailsPdfAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/pdf</param>
+                <param name="contentDisposition">filename="project-details.pdf"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
+        <action name="/api/get-user-details-pdf/*" class="resources.users.UserDetailsPdfAction">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="json">
+                <param name="enableSMD">true</param>
+            </interceptor-ref>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="contentType">application/pdf</param>
+                <param name="contentDisposition">filename="user-details.pdf"</param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
     </package>
 
     <package name="index" extends="struts-default, json-default">

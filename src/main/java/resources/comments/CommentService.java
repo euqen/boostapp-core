@@ -18,6 +18,16 @@ public class CommentService {
         return session.get(Comment.class, id);
     }
 
+    public static List<Comment> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Comment");
+        List<Comment> comments = query.list();
+        session.getTransaction().commit();
+
+        return comments;
+    }
+
     public static List<Comment> getAllByProjectId(Integer projectId) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

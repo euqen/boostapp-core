@@ -1,12 +1,14 @@
-package resources.companies;
+package resources.projects;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.Result;
+import resources.companies.Company;
+
 import java.io.*;
 import java.util.List;
 
 @Result(type = "json")
-public class ExportCompaniesCsvAction extends ActionSupport {
+public class ExportAllProjectsCsvAction extends ActionSupport {
     private int id;
 
     private Integer userId;
@@ -15,25 +17,30 @@ public class ExportCompaniesCsvAction extends ActionSupport {
 
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
-    private static final String FILE_HEADER = "id,title,tagLine";
+    private static final String FILE_HEADER = "id,companyId,title,description,amount,paymentAmount";
 
     public String view() throws Exception {
 
         DataOutputStream buffer = new DataOutputStream(new FileOutputStream("report.csv"));
 
-        List<CompanyMember> cms = CompanyMembersService.getByUserId(this.getUserId());
-        if (cms != null) {
+        List<Project> projects = ProjectService.getAll();
+        if (projects != null) {
             buffer.writeBytes(FILE_HEADER);
             buffer.writeBytes(NEW_LINE_SEPARATOR);
 
-            for (CompanyMember cm : cms) {
-                Company company = CompanyService.getById(cm.getCompanyId());
-                if (company != null) {
-                    buffer.writeBytes("" + company.getId());
+            for (Project project : projects) {
+                if (project != null) {
+                    buffer.writeBytes("" + project.getId());
                     buffer.writeBytes(COMMA_DELIMITER);
-                    buffer.writeBytes(company.getTitle());
+                    buffer.writeBytes(""+project.getCompanyId());
                     buffer.writeBytes(COMMA_DELIMITER);
-                    buffer.writeBytes(company.getTagLine());
+                    buffer.writeBytes(project.getTitle());
+                    buffer.writeBytes(COMMA_DELIMITER);
+                    buffer.writeBytes(project.getDescription());
+                    buffer.writeBytes(COMMA_DELIMITER);
+                    buffer.writeBytes(""+project.getAmount());
+                    buffer.writeBytes(COMMA_DELIMITER);
+                    buffer.writeBytes(""+project.getPaymentAmount());
                     buffer.writeBytes(NEW_LINE_SEPARATOR);
                 }
             }

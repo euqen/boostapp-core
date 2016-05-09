@@ -2,6 +2,17 @@
     <div ng-repeat="(key, value) in error">{{value}}</div>
 </div>
 
+<a href="/api/get-all-companies-csv" target="_blank" class="btn btn-sm btn-success">Export CSV with all companies</a>
+<a href="/api/get-all-projects-csv" target="_blank" class="btn btn-sm btn-success">Export CSV with all projects</a>
+<a href="/api/get-all-payments-xls" target="_blank" class="btn btn-sm btn-warning">Export XLS with all payments</a>
+<br><br>
+<a href="/api/get-all-companies-xls" target="_blank" class="btn btn-sm btn-warning">Export XLS with all companies</a>
+<a href="/api/get-all-projects-xls" target="_blank" class="btn btn-sm btn-warning">Export XLS with all projects</a>
+<a href="/api/get-all-users-xls" target="_blank" class="btn btn-sm btn-warning">Export XLS with all users</a>
+<a href="/api/get-all-comments-xls" target="_blank" class="btn btn-sm btn-warning">Export XLS with all comments</a>
+
+<br><br>
+
 <div ng-repeat="user in users" class="row" style="border-bottom: 1px solid #B8BBBF;">
     <div class="col-md-8 col-lg-8 col-sm-8"  style="margin-top: 12px;">{{user.email}}</div>
     <div class="col-md-4 col-sm-4" style="margin-top: 5px;">

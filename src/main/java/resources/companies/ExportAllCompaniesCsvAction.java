@@ -1,12 +1,18 @@
 package resources.companies;
 
+import com.itextpdf.text.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.Result;
+import com.itextpdf.text.pdf.PdfWriter;
+import resources.projects.Project;
+import resources.projects.ProjectService;
+
 import java.io.*;
+import java.util.Date;
 import java.util.List;
 
 @Result(type = "json")
-public class ExportCompaniesCsvAction extends ActionSupport {
+public class ExportAllCompaniesCsvAction extends ActionSupport {
     private int id;
 
     private Integer userId;
@@ -21,13 +27,12 @@ public class ExportCompaniesCsvAction extends ActionSupport {
 
         DataOutputStream buffer = new DataOutputStream(new FileOutputStream("report.csv"));
 
-        List<CompanyMember> cms = CompanyMembersService.getByUserId(this.getUserId());
-        if (cms != null) {
+        List<Company> companies = CompanyService.getAll();
+        if (companies != null) {
             buffer.writeBytes(FILE_HEADER);
             buffer.writeBytes(NEW_LINE_SEPARATOR);
 
-            for (CompanyMember cm : cms) {
-                Company company = CompanyService.getById(cm.getCompanyId());
+            for (Company company : companies) {
                 if (company != null) {
                     buffer.writeBytes("" + company.getId());
                     buffer.writeBytes(COMMA_DELIMITER);
